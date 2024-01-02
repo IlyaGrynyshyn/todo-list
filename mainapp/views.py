@@ -11,7 +11,14 @@ class TodoListView(ListView):
     ordering = ["-is_done", "-created"]
     template_name = 'mainapp/index.html'
 
+
 class TaskCrateView(CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("home")
+
+
+class TaskUpdateView(UpdateView):
     model = Task
     fields = "__all__"
     success_url = reverse_lazy("home")

@@ -1,7 +1,8 @@
 from django.urls import path, include
-from mainapp.views import TodoListView, TaskCrateView
+from mainapp.views import TodoListView, TaskCrateView, TaskUpdateView
 
 urlpatterns = [
     path("", TodoListView.as_view(), name="home"),
-    path("create/", TaskCrateView.as_view(), name="create-tast")
+    path("create-task/", TaskCrateView.as_view(), name="create-task"),
+    path("update-task", TaskUpdateView.as_view(), name="update-task")
 ]
