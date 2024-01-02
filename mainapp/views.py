@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView
 
 from mainapp.models import Task
 
@@ -9,3 +10,8 @@ class TodoListView(ListView):
     context_object_name = 'tasks'
     ordering = ["-is_done", "-created"]
     template_name = 'mainapp/index.html'
+
+class TaskCrateView(CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("home")
