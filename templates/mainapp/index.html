@@ -2,7 +2,8 @@
 {% block content %}
   <div class="p-3">
     <h1>TODO list</h1>
-    <div class="d-flex justify-content-end mt-auto"><a href='{% url "create-task" %}' class='btn btn-primary link-to-page create_btn'>
+    <div class="d-flex justify-content-end mt-auto"><a href='{% url "create-task" %}'
+                                                       class='btn btn-primary link-to-page create_btn'>
       Create
     </a></div>
   </div>
@@ -20,16 +21,19 @@
           <strong class="text-danger">Not done</strong>
         {% endif %}
         <p>Created: {{ task.created }}</p>
-        <span>Tags: {{ task.tags.name }}
-        <a href="{% url "update-task" task.pk %}">Update</a>
+        <span>Tags:
+          {% for tag in task.tags.all %}
+            {{ tag.name }}
+          {% endfor %}
+          <a href="{% url "update-task" task.pk %}">Update</a>
         <a href="{% url "delete-task" task.pk %}">delete</a>
         </span>
         <div class="d-flex justify-content-end mt-auto">
           {% if task.is_done %}
             <a href="{% url 'change-status' task.pk %}" class="btn btn-sm btn-warning ml-2">Undo</a>
-        {% else %}
+          {% else %}
             <a href="{% url 'change-status' task.pk %}" class="btn btn-sm btn-success ml-2">Complete</a>
-        {% endif %}
+          {% endif %}
         </div>
       <li>
     {% endfor %}
