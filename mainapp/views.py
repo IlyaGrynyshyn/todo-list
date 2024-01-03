@@ -35,7 +35,7 @@ class DeleteTaskView(DeleteView):
 class TaskStatusChangeView(View):
     success_url = reverse_lazy("home")
 
-    def get(self, request, pk):
+    def post(self, request, pk):
         task = get_object_or_404(Task, pk=pk)
         task.is_done = not task.is_done
         task.save()
