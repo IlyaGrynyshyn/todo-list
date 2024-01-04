@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from mainapp.models import Task, Tag
+from todo_app.models import Task, Tag
 
 
 class TodoListView(ListView):

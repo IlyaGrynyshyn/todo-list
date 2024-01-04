@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ("created", models.DateTimeField(auto_now_add=True)),
                 ("deadline", models.DateTimeField(blank=True, null=True)),
                 ("is_done", models.BooleanField(default=False)),
-                ("tags", models.ManyToManyField(to="mainapp.tag")),
+                ("tags", models.ManyToManyField(to="todo_app.tag")),
             ],
         ),
     ]
